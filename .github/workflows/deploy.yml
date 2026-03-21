@@ -21,19 +21,10 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            # Go to root
-            cd /root
+           cd /root/techtadka-store 
+           sudo apt install docker.io docker-compose -y
+           git pull origin main 
+           docker-compose down 
+           docker-compose up -d --build
 
-            # Clone only if not exists
-            if [ ! -d "techtadka-store" ]; then
-              git clone https://github.com/SHUBHAM-TAYDE/techtadka-store.git
-            fi
-
-            cd techtadka-store
-
-            # Pull latest code
-            git pull origin main
-
-            # Use Docker Compose v2
-            docker compose down
-            docker compose up -d --build
+           
