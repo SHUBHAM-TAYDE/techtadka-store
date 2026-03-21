@@ -21,6 +21,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
+            git clone https://github.com/SHUBHAM-TAYDE/techtadka-store.git
             cd /root/techtadka-store
             git pull origin main
             docker-compose down
